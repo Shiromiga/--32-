@@ -1,69 +1,53 @@
-# 1 вариант
+# 8 практика 1 вариант
 
 
-#1 адание
-import random
+#1 Задание
+def mat(matrix):
+    n = len(matrix)
+    summ = 0
+    count = 0
 
-N = 5  # размерность матрицы
-# создание матрицы и заполнение случайными числами
-A = [[random.randint(-10, 10) for j in range(N)] for i in range(N)]
-print("Матрица A:")
-for i in range(N):
-    for j in range(N):
-        print(A[i][j], end=" ")
-    print()
+    for i in range(n): # Количество элементов в матрице 
+        for j in range(i+1, n): # Берем элемент выше главной дивгонали 
+            if matrix[i][j] > 0:
+                summ+= matrix[i][j]
+                count += 1
 
-# вычисление суммы и количества положительных элементов над главной диагональю
-sum_positive = 0
-count_positive = 0
-for i in range(N):
-    for j in range(i + 1, N):
-        if A[i][j] > 0:
-            sum_positive += A[i][j]
-            count_positive += 1
-
-# вывод результата
-print("Сумма положительных элементов над главной диагональю:", sum_positive)
-print("Количество положительных элементов над главной диагональю:", count_positive)
-
-
-
-
-
+    return summ, count
+A = [
+    [1, -3, 5],
+    [3, 5, -8],
+    [-1, 9, 9]]
+result1, result2 = mat(A)
+print("Сумма положительных эллементов", result1)
+print("Количество таких элементов", result2)
 
 
 
 #2 Задание
-import random
+def izmena(matrix):
+    for r in matrix:
+        min_idx = 0
+        max_idx = 0
 
-N = 5  # количество строк матрицы
-M = 4  # количество столбцов матрицы
-# создание матрицы и заполнение случайными числами
-B = [[random.randint(-10, 10) for j in range(M)] for i in range(N)]
-print("Матрица B:")
-for i in range(N):
-    for j in range(M):
-        print(B[i][j], end=" ")
-    print()
+        # Находим индексы минимального и максимального элементов в строке
+        for i in range(1, len(r)):
+            if r[i] < r[min_idx]:
+                min_idx = i
+            if r[i] > r[max_idx]:
+                max_idx = i
 
+        # Меняем местами минимальный элемент с оследним, а максимальный элемент с первым
+        r[0], r[max_idx] = r[max_idx], r[0]
+        r[-1], r[min_idx] = r[min_idx], r[-1]
 
-for i in range(N):
-    max_element = max(B[i])
-    min_element = min(B[i])
-
-    # нахождение индексов максимального и минимального элементов в строке
-    max_index = B[i].index(max_element)
-    min_index = B[i].index(min_element)
-
-    # обмен максимального элемента с первым элементом строки
-    B[i][0], B[i][max_index] = B[i][max_index], B[i][0]
-
-    # обмен минимального элемента с последним элементом строки
-    B[i][-1], B[i][min_index] = B[i][min_index], B[i][-1]
+    return matrix
 
 
-print("Измененная матрица B:")
-for i in range(N):
-    for j in range(M):
-        print(B[i][j], end=" ")
-    print()
+B = [
+    [31, 2, 100],
+    [14, 5, 61],
+    [9, 8, 10]]
+
+result = izmena(B)
+print(result)
