@@ -25,29 +25,22 @@ print("Количество таких элементов", result2)
 
 
 #2 Задание
-def izmena(matrix):
-    for r in matrix:
-        min_idx = 0
+matrix = [
+    [31, 2, 100, 102],
+    [14, 5, 61, 1004],
+    [9, 8, 30, 322],
+    [3, 5,30,222]]
+for r in matrix:
         max_idx = 0
-
-        # Находим индексы минимального и максимального элементов в строке
+        for i in range(1, len(r)):
+            if r[i] > r[max_idx]:
+                max_idx = i
+        r[0], r[max_idx] = r[max_idx], r[0]
+        min_idx = 0
         for i in range(1, len(r)):
             if r[i] < r[min_idx]:
                 min_idx = i
-            if r[i] > r[max_idx]:
-                max_idx = i
-
-        # Меняем местами минимальный элемент с оследним, а максимальный элемент с первым
-        r[0], r[max_idx] = r[max_idx], r[0]
         r[-1], r[min_idx] = r[min_idx], r[-1]
 
-    return matrix
 
-
-B = [
-    [31, 2, 100],
-    [14, 5, 61],
-    [9, 8, 10]]
-
-result = izmena(B)
-print(result)
+print(matrix)
