@@ -53,7 +53,7 @@ def show_selected_checkbox():
         messagebox.showinfo("Выбор", "Вы выбрали первый вариант")
     elif checkbox2_var.get() == 1:
         messagebox.showinfo("Выбор", "Вы выбрали второй вариант ")
-    else checkbox3_var.get() == 1:
+    elif checkbox3_var.get() == 1:
         messagebox.showinfo("Выбор", "Вы выбрали третий вариант ")
 # Вкладка с чекбоксами
 checkbox1_var = tk.IntVar()
