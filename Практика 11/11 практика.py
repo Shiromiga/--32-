@@ -8,21 +8,21 @@ root = tk.Tk()
 root.geometry("1000x500")
 root.title("Игнатьев Дмитрий Сергеевич")
 
-tab_control = ttk.Notebook(root) # Виджет с несколькими вкладками
+tab_control = ttk.Notebook(root) 
 tab1 = ttk.Frame(tab_control)
 tab2 = ttk.Frame(tab_control)
 tab3 = ttk.Frame(tab_control)
 
-tab_control.add(tab1, text='1 вкладка')#Добавление вкладок
+tab_control.add(tab1, text='1 вкладка')
 tab_control.add(tab2, text='2 вкладка')
 tab_control.add(tab3, text='3 вкладка')
 
-tab_control.pack(expand=True, fill='both') # Расщирене на полную длинну родительского контейнера  и заполнение всего объёма
+tab_control.pack(expand=True, fill='both')
 
 
 
 def calculate():
-    num1 = float(entry1.get())#Переменная, принимающая в себя число
+    num1 = float(entry1.get())
     num2 = float(entry2.get())
     operation = operation_var.get()
     if operation == '+':
@@ -35,13 +35,13 @@ def calculate():
         result = num1 / num2
     result_label.config(text="Ответ: " + str(result))
 # Вкладка с калькулятором
-entry1 = tk.Entry(tab1)# Принятие одного числа
+entry1 = tk.Entry(tab1)
 entry1.pack()
-entry2 = tk.Entry(tab1)# Принятие вторго числа
+entry2 = tk.Entry(tab1)
 entry2.pack()
-operation_var = tk.StringVar(tab1) #Отслеживание операций
+operation_var = tk.StringVar(tab1)
 operation_var.set('+')
-operation_menu = tk.OptionMenu(tab1, operation_var, '+', '-', '*', '/') #Выпадающее меню с операциями
+operation_menu = tk.OptionMenu(tab1, operation_var, '+', '-', '*', '/')
 operation_menu.pack()
 calculate_button = tk.Button(tab1, text="Подсчёт", command=calculate)
 calculate_button.pack()
@@ -59,20 +59,20 @@ def show_selected_checkbox():
 checkbox1_var = tk.IntVar()
 checkbox2_var = tk.IntVar()
 checkbox3_var = tk.IntVar()
-checkbox1 = tk.Checkbutton(tab2, text="Первый", variable=checkbox1_var) #Флвжок с выбором чекбокса
+checkbox1 = tk.Checkbutton(tab2, text="Первый", variable=checkbox1_var)
 checkbox1.pack()
-checkbox2 = tk.Checkbutton(tab2, text="Второй", variable=checkbox2_var) #аналогично
+checkbox2 = tk.Checkbutton(tab2, text="Второй", variable=checkbox2_var)
 checkbox2.pack()
-checkbox3 = tk.Checkbutton(tab2, text="Третий", variable=checkbox3_var) #аналогично
+checkbox3 = tk.Checkbutton(tab2, text="Третий", variable=checkbox3_var)
 checkbox3.pack()
-show_selected_button = tk.Button(tab2, text="Показать выбор", command=show_selected_checkbox) #Кнопка показывающая выбор
+show_selected_button = tk.Button(tab2, text="Показать выбор", command=show_selected_checkbox)
 show_selected_button.pack()
 def open_file():
     file_path = filedialog.askopenfilename()
     with open(file_path, 'r') as file:
         text = file.read()
-        text_box.delete(1.0, tk.END) #Удаляет все, с начала до конца
-        text_box.insert(tk.END, text) #Вставляет текст из файла
+        text_box.delete(1.0, tk.END)
+        text_box.insert(tk.END, text)
 
 
 # Вкладка с текстом
