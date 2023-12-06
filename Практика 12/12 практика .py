@@ -3,15 +3,15 @@ import requests
 import json
 
 def get_repository_info():
-    repo_name = entry.get() #Название репозитоориря , получаемое от человека
-    url = f'https://api.github.com/repos/{repo_name}' #Полная урл ссылка на репозиторий , форматированная строка Ф
-    response = requests.get(url) #Получение данных по урл
-    data = response.json() #Преобразование в json
+    repo_name = entry.get()
+    url = f'https://api.github.com/repos/{repo_name}'
+    response = requests.get(url) 
+    data = response.json()
 
-    # Создание словаря ключ зачение, содержащий в себе данные из data
+   
     info = {
         'company': data.get('company', 'N/A'),
-        'created_at': data.get('created_at', 'N/A'),#Извлечение определённой информации из data
+        'created_at': data.get('created_at', 'N/A'),
         'email': data.get('email', 'N/A'),
         'id': data.get('id', 'N/A'),
         'name': data.get('name', 'N/A'),
